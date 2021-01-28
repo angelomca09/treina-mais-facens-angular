@@ -29,4 +29,12 @@ export class FirestoreService {
     )
   }
 
+  setCollection(data: any, collection: any) {
+    return this._firestore.collection(collection).add(data);
+  }
+
+  getColletion(collectionName: any) {
+    return this._firestore.collection(collectionName).valueChanges();
+  }
+
 }

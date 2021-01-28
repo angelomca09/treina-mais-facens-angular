@@ -8,8 +8,11 @@
 <div>
 <mat-form-field class="cep">
     <mat-label>CEP</mat-label>
-    <input matInput placeholder="Ex. 18270-000" >
+    <input [(ngModel)]="cepEntrega" matInput placeholder="Ex. 18270-000" >
   </mat-form-field>
+  <button (click)="mostrarCadastroEndereco()" mat-mini-fab aria-label="Cadastro de Endereço">
+    <mat-icon>directions</mat-icon>
+  </button>
 <br>  
   <b>Total:</b>
 

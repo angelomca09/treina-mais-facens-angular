@@ -1,0 +1,57 @@
+<div class="container">
+  <mat-card>
+    <div class="row">
+      <mat-card-title>
+        Endereço de entrega
+      </mat-card-title>
+    </div>
+
+    <mat-radio-group [(ngModel)]="enderecoSelecionado" class="row" aria-label="Select an option">
+      <div fxLayout="row" fxLayoutAlign="start" *ngFor="let endereco of enderecosList">
+        <mat-radio-button class="mt-4" [value]="endereco">
+          <div fxLayout="column" fxLayout="start"> 
+            <span>{{ endereco.rua}}, {{endereco.numero}}</span>
+            <span *ngIf="endereco.complemento">{{ endereco.complemento }}</span>
+            <span>{{ endereco.CEP }} - {{ endereco.cidade}}</span>
+          </div>        
+        </mat-radio-button>
+      </div>
+    </mat-radio-group>
+
+    <div fxLayout="row" fxLayoutAlign="center">
+      <button [disabled]="!enderecoSelecionado" (click)="onSelecionarEndereco()" 
+        class="col-auto" mat-raised-button color="primary">Selecionar Endereço</button>
+    </div>
+
+    <div class="row">
+      <mat-card-title>
+        Novo Endereço
+      </mat-card-title>
+    </div>
+
+    <form [formGroup]="enderecoGroup" class="row" action="">
+      <mat-form-field class="col-12">
+        <mat-label>CEP</mat-label>
+        <input (keyup)="searchCep()" formControlName="CEP" matInput>
+      </mat-form-field>
+
+      <div *ngIf="dataCep.rua" class="col-12 card-data">
+        {{ dataCep.rua }} - {{ dataCep.cidade }}
+      </div>
+
+      <mat-form-field class="col-12">
+        <mat-label>Número</mat-label>
+        <input formControlName="numero" matInput>
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Complemento</mat-label>
+        <input formControlName="complemento" matInput>
+      </mat-form-field>
+
+      <div class="row justify-content-center">
+        <button (click)="onSalvar()" class="col-auto" mat-raised-button color="primary">Salvar Endereço</button>
+      </div>
+    </form>
+  </mat-card>
+</div>

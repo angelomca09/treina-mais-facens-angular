@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { ProductItemComponent } from './product-item/product-item.component';
 import { Routes, RouterModule } from '@angular/router';
+import { EnderecoComponent } from './endereco/endereco.component';
 
 const ROUTES: Routes = [
   { path: '', component: UiClienteComponent, children: [
@@ -21,12 +22,13 @@ const ROUTES: Routes = [
     HomeComponent,
     InterfaceComponent,
     ProductItemComponent,
-    UiClienteComponent
+    UiClienteComponent,
+    EnderecoComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule.forChild(ROUTES)
-  ]
+  ],
 })
 export class UiClienteModule { }
